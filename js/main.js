@@ -18,35 +18,52 @@ const handleLoadVideos = async (id) => {
   );
   const data = await response.json();
   console.log(data);
-  const cardContainer = document.getElementById("videos-container");
-  cardContainer.innerHTML = "";
-  data.data.forEach((video) => {
-    const div = document.createElement("div");
-    div.innerHTML = `
+  if (data.status === true) {
+    const cardContainer = document.getElementById("videos-container");
+    cardContainer.innerHTML = "";
+    data.data.forEach((video) => {
+      const div = document.createElement("div");
+      div.innerHTML = `
             <div class="card bg-base-100 shadow-xl">
-          <figure class= "w-full h-60">
+          <figure class= "w-full h-40">
             <img
               src=${video?.thumbnail}
               alt="Shoes"
             />
           </figure>
-          <div class="flex gap-4 p-3">
-            <div class="w-16 h-16">
-              <img src="./images/Icon.png" alt="" />
+          <div class="flex gap-4 p-3 mt-3">
+            <div>
+              <img class="w-16 h-16 rounded-full" src=${
+                video?.authors[0]?.profile_picture
+              } />
             </div>
-            <div class="">
-              <h2 class="font-bold text-2xl">Shoes!</h2>
+            <div>
+              <h2 class="font-semibold text-xl">${video?.title}</h2>
               <div class="flex gap-2">
-                <p>Awlad hossain</p>
-                <i></i>
+                <p>${video?.authors[0]?.profile_name}</p>
+                <img src=${video.authors[0].verified ? "./images/tick.svg" : ''}>
               </div>
-              <p>91k views</p>
+              <p>${video?.others?.views} views</p>
             </div>
           </div>
         </div>
         `;
-        cardContainer.appendChild(div);
-  });
+      cardContainer.appendChild(div);
+    });
+  } else {
+    const sectionContainer = document.getElementById("video-container");
+    const cardContainer = document.getElementById("videos-container");
+    cardContainer.innerHTML = "";
+    const div = document.createElement("div");
+    div.innerHTML = `
+        <div class="text-center mt-14">
+            <img class="mx-auto w-1/6" src="./images/Icon.png" alt="">
+            <h3 class="font-bold text-2xl mt-4">Oops!! Sorry, There is no content here</h3>
+        </div>
+    `;
+
+    sectionContainer.appendChild(div);
+  }
 };
 handleLoadVideos("1000");
 handleCategory();

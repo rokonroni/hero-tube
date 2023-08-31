@@ -20,6 +20,8 @@ const handleLoadVideos = async (id) => {
   console.log(data);
   if (data.status === true) {
     const cardContainer = document.getElementById("videos-container");
+    const noDataContainer = document.getElementById("no-data");
+    noDataContainer.innerHTML = "";
     cardContainer.innerHTML = "";
     data.data.forEach((video) => {
       const div = document.createElement("div");
@@ -51,9 +53,10 @@ const handleLoadVideos = async (id) => {
       cardContainer.appendChild(div);
     });
   } else {
-    const sectionContainer = document.getElementById("video-container");
-    const cardContainer = document.getElementById("videos-container");
-    cardContainer.innerHTML = "";
+    const videosContainer = document.getElementById("videos-container");
+    const noDataContainer = document.getElementById("no-data");
+    videosContainer.innerHTML = "";
+    noDataContainer.innerHTML = "";
     const div = document.createElement("div");
     div.innerHTML = `
         <div class="text-center mt-14">
@@ -62,7 +65,7 @@ const handleLoadVideos = async (id) => {
         </div>
     `;
 
-    sectionContainer.appendChild(div);
+    noDataContainer.appendChild(div);
   }
 };
 handleLoadVideos("1000");

@@ -21,14 +21,15 @@
         </div>
         <div class="flex flex-1 justify-between gap-16 mt-4 md:mt-0">
           <div class="lg:ml-[-60px]">
-            <button
+            <button id="sort-btn"
+            onclick="handleSorting()"
               class="btn bg-gray-400 hover:bg-gray-500 text-white border-none"
             >
               Sort by view
             </button>
           </div>
           <div>
-            <button
+            <button id="blog-btn" onclick="goToBlog()"
               class="btn text-white bg-red-600 hover:bg-red-700 border-none"
             >
               Blog

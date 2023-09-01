@@ -1,3 +1,11 @@
+function goToBlog() {
+  window.location.href = "./blog.html";
+}
+
+function goToHome() {
+  window.location.href = "./index.html";
+}
+
 const handleCategory = async () => {
   const response = await fetch(
     "https://openapi.programming-hero.com/api/videos/categories"
@@ -13,30 +21,31 @@ const handleCategory = async () => {
   });
 };
 
-
-
+let globalData = [];
 const handleLoadVideos = async (id, addClass) => {
   const response = await fetch(
     `https://openapi.programming-hero.com/api/videos/category/${id}`
   );
   const data = await response.json();
-  if (id==1000) {
+
+  if (id == "1000") {
     const allButtons = document.querySelectorAll(".tab");
-  allButtons.forEach(button => button.classList.remove("bg-red-500"));
-  allButtons[0].classList.add("bg-red-500");
-  }
-  else {
+    allButtons.forEach((button) => button.classList.remove("bg-red-500"));
+    allButtons?.[0]?.classList.add("bg-red-500");
+  } else {
     const allButtons = document.querySelectorAll(".tab");
-  allButtons.forEach(button => button.classList.remove("bg-red-500"));
-  addClass.classList.add("bg-red-500");
+    allButtons.forEach((button) => button.classList.remove("bg-red-500"));
+    addClass.classList.add("bg-red-500");
   }
+
   if (data.status === true) {
     const cardContainer = document.getElementById("videos-container");
     const noDataContainer = document.getElementById("no-data");
     noDataContainer.innerHTML = "";
     cardContainer.innerHTML = "";
-
+    globalData = [];
     data.data.forEach((video) => {
+      globalData.push(video);
       const div = document.createElement("div");
       const postedTime = video?.others?.posted_date;
 
@@ -80,8 +89,7 @@ const handleLoadVideos = async (id, addClass) => {
         `;
       cardContainer.appendChild(div);
     });
-  }
-  else {
+  } else {
     const videosContainer = document.getElementById("videos-container");
     const noDataContainer = document.getElementById("no-data");
     videosContainer.innerHTML = "";
@@ -98,5 +106,64 @@ const handleLoadVideos = async (id, addClass) => {
   }
 };
 
-handleLoadVideos("1000");
+
+
+function handleSorting() {
+  globalData.sort((a, b) => {
+  const viewsA = parseFloat(a.others.views.replace('K', '000'));
+  const viewsB = parseFloat(b.others.views.replace('K', '000'));
+  return viewsB - viewsA;
+});
+    const cardContainer = document.getElementById("videos-container");
+    const noDataContainer = document.getElementById("no-data");
+    noDataContainer.innerHTML = "";
+    cardContainer.innerHTML = "";
+    globalData.forEach((video) => {
+      console.log(video)
+      const div = document.createElement("div");
+      const postedTime = video?.others?.posted_date;
+
+      const hours = Math.floor(postedTime / 3600);
+      const minutes = Math.floor((postedTime % 3600) / 60);
+      div.innerHTML = `
+            <div class="card bg-base-100 shadow-xl">
+          <figure class= "w-full h-40 relative inline-block">
+            <img
+              src=${video?.thumbnail}
+              alt=""
+            />
+
+            <div class="text-white absolute  bottom-2 right-2">
+            ${
+              postedTime
+                ? `<p class= "p-2 rounded-lg bg-slate-800">${hours} Hours ${minutes} min ago</p>`
+                : ""
+            }
+            </div>
+                
+          </figure> 
+          <div class="flex gap-4 p-3 mt-3">
+            <div>
+              <img class="w-16 h-16 rounded-full" src=${
+                video?.authors[0]?.profile_picture
+              } />
+            </div>
+            <div>
+              <h2 class="font-semibold text-xl">${video?.title}</h2>
+              <div class="flex gap-2">
+                <p>${video?.authors[0]?.profile_name}</p>
+                <img src=${
+                  video.authors[0].verified ? "./images/tick.svg" : ""
+                }>
+              </div>
+              <p>${video?.others?.views} views</p>
+            </div>
+          </div>
+        </div>
+        `;
+      cardContainer.appendChild(div);
+    
+})
+}
 handleCategory();
+handleLoadVideos("1000");

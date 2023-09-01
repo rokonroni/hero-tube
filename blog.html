@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PH tube Blog</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@3.6.4/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <header>
+      <h3
+        class="lg:text-5xl text-blue-700 text-2xl md:text-3xl font-bold border-b-2 py-6 text-center"
+      >
+        Programming Hero Tube Blog
+      </h3>
+    </header>
+    <main>
+      <section class="container mx-auto mt-4">
+        <div class="collapse collapse-plus text-white bg-blue-700 mb-4">
+          <input type="radio" name="my-accordion-3" checked="checked" />
+          <div class="collapse-title text-2xl font-bold ">
+            Discuss the scope of var, let, and const:-
+          </div>
+          <div class="collapse-content">
+            <p class="text-xl "> <strong>var:</strong> var declared are function scoped variables. When we declared a variable with var we can use the variable any places we want. If we declared a variable outsite a funcion  we can also use the variable in the funcion. And if we declared a variable inside a function we can use the variable outside the funcion . The var variable are hoisted to the top there contaning funcion or the global scope. We can call the variable before initialized and it will give a undefined value.</p>
+            <p class="text-xl mt-2"><strong>let:</strong> let declared are block scoped variables. When we declared a variable with let we can't use the variable outside a block. Like if we declared a global variable with let we can't use the variable in a function. On the other side if we declared a variable with let in a funcion we can not use the variable outside the function. It work in a boundary or a room which called a block in Programming Language. That's why let variables scoped is block scoped. And the let variables are not hoisted. We can use the variable only when we initialized the variable. </p>
+            <p  class="text-xl mt-2"><strong>const:</strong></p>
+          </div>
+        </div>
+        <div class="collapse collapse-plus text-white bg-blue-700 mb-4">
+          <input type="radio" name="my-accordion-3" />
+          <div class="collapse-title text-xl font-medium text-red-500">
+            Click to open this one and close others
+          </div>
+          <div class="collapse-content text-white">
+            <p>hello</p>
+          </div>
+        </div>
+        <div class="collapse collapse-plus text-white bg-blue-700 mb-4">
+          <input type="radio" name="my-accordion-3" />
+          <div class="collapse-title text-xl font-medium">
+            Click to open this one and close others
+          </div>
+          <div class="collapse-content">
+            <p>hello</p>
+          </div>
+        </div>
+      </section>
+      <section>
+        <button
+          id="home-btn"
+          onclick="goToHome()"
+          class="btn text-white bg-red-600 hover:bg-red-700 border-none"
+        >
+          Home
+        </button>
+      </section>
+    </main>
+
+    <script src="./js/main.js"></script>
+  </body>
+</html>

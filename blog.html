@@ -20,44 +20,61 @@
       </h3>
     </header>
     <main>
-      <section class="container mx-auto mt-4">
-        <div class="collapse collapse-plus text-white bg-blue-700 mb-4">
+      <section class="container mx-auto mt-4 px-2 lg:px-0">
+        <div class="collapse collapse-plus text-black bg-blue-300 mb-4">
           <input type="radio" name="my-accordion-3" checked="checked" />
           <div class="collapse-title text-2xl font-bold ">
             Discuss the scope of var, let, and const:-
           </div>
           <div class="collapse-content">
-            <p class="text-xl "> <strong>var:</strong> var declared are function scoped variables. When we declared a variable with var we can use the variable any places we want. If we declared a variable outsite a funcion  we can also use the variable in the funcion. And if we declared a variable inside a function we can use the variable outside the funcion . The var variable are hoisted to the top there contaning funcion or the global scope. We can call the variable before initialized and it will give a undefined value.</p>
-            <p class="text-xl mt-2"><strong>let:</strong> let declared are block scoped variables. When we declared a variable with let we can't use the variable outside a block. Like if we declared a global variable with let we can't use the variable in a function. On the other side if we declared a variable with let in a funcion we can not use the variable outside the function. It work in a boundary or a room which called a block in Programming Language. That's why let variables scoped is block scoped. And the let variables are not hoisted. We can use the variable only when we initialized the variable. </p>
-            <p  class="text-xl mt-2"><strong>const:</strong></p>
+            <p class="text-xl "> <strong><u>var:</u></strong> var declared are function scoped variables. When we declared a variable with var we can use the variable any places we want. If we declared a variable outsite a funcion  we can also use the variable in the funcion. And if we declared a variable inside a function we can use the variable outside the funcion . The var variable are hoisted to the top there contaning funcion or the global scope. We can call the variable before initialized and it will give a undefined value.</p>
+            <p class="text-xl mt-2"><strong><u>let:</u></strong> let declared are block scoped variables. When we declared a variable with let we can't use the variable outside a block. Like if we declared a global variable with let we can't use the variable in a function. On the other side if we declared a variable with let in a funcion we can not use the variable outside the function. It work in a boundary or a room which called a block in Programming Language. That's why let variables scoped is block scoped. And the let variables are not hoisted. We can use the variable only when we initialized the variable. </p>
+            <p  class="text-xl mt-2"><strong><u>const:</u></strong> const also declared are block scoped variables like let. When we declared a variable with const we cann't be reassigned the initial value of this variable. The const variable is mutable. </p>
           </div>
         </div>
-        <div class="collapse collapse-plus text-white bg-blue-700 mb-4">
-          <input type="radio" name="my-accordion-3" />
-          <div class="collapse-title text-xl font-medium text-red-500">
-            Click to open this one and close others
-          </div>
-          <div class="collapse-content text-white">
-            <p>hello</p>
-          </div>
-        </div>
-        <div class="collapse collapse-plus text-white bg-blue-700 mb-4">
-          <input type="radio" name="my-accordion-3" />
-          <div class="collapse-title text-xl font-medium">
-            Click to open this one and close others
+        <div class="collapse collapse-plus text-black bg-blue-300 mb-4">
+          <input type="radio" name="my-accordion-3"  />
+          <div class="collapse-title text-2xl font-bold ">
+            Tell us the use cases of null and undefined:-
           </div>
           <div class="collapse-content">
-            <p>hello</p>
+            <p  class="text-xl mt-2"><strong><u>null: </u></strong> 
+              <li class="text-xl mt-2">Which variable or property was declared but hasn't been initialized the value we can use 'null' for the variable or property intentionally so the value is empty or no value.</li>
+              <li class="text-xl mt-2">We can use null value for an object property to indicate the property is cleared or reset.</li>
+              <li class="text-xl mt-2">We can use 'null' to check a specific value or object property exixts or not. And then we can say is it true or false and also is it undefined or not. </li>
+              <li class="text-xl mt-2">When we fetch data from API if the functions return 'null' to indicate the abssence of data or an error condition. It's important to check for 'null' when working with this APIs.</li>
+            </p>
+            <p  class="text-xl mt-2"><strong><u>undefined: </u></strong> 
+              <li class="text-xl mt-2">When we declared a variable but don't assign a value to the variable, it's automatically initialized with 'undefined'. This can happan when a function paremeter is not provided or when a variable is declared but not assigned a value</li>
+              <li class="text-xl mt-2">When we want to access an object property which is doesn't exixts. JavaScript returns 'undefined' the value. So we can check the property exixts in this object or not.</li>
+              <li class="text-xl mt-2"> When we write any function with no returns it automatically return a 'undefined' by default. </li>
+            </p>
+          </div>
+        </div>
+        <div class="collapse collapse-plus text-black bg-blue-300 mb-4">
+          <input type="radio" name="my-accordion-3" />
+          <div class="collapse-title text-2xl font-bold">
+            What do you mean by REST API?
+          </div>
+          <div class="collapse-content">
+            <p class="text-xl mt-2"><strong><u>REST API:</u></strong> REST API means Representational State Transfer Application Programming Interface. In Rest API, everything is treated as a resource . We can named any pieces of the information.</p>
+            <p class="text-xl mt-2"><strong><u>REST HTTP Methods:</u></strong> REST uses standard HTTP methods to perform operations on resources. The most commonly used HTTP methods in RESTful APIs are: 
+            <li class="text-xl mt-2"><strong><u>GET:</u></strong> Used to retrieve data from the server. </li>
+            <li class="text-xl mt-2"><strong><u>POST:</u></strong> Used to create a new resource on the server. </li>
+            <li class="text-xl mt-2"><strong><u>PUT:</u></strong> Used to update an existing resource or create a new resource if it doesn't exist.</li> 
+            <li class="text-xl mt-2"><strong><u>DELETE:</u></strong> Used to remove a resource from the server.</li> 
+            <p class="text-xl mt-2">REST followe a client server architecture and responses from the server can be explicitly marked as cacheable or non cacheable.</p>
+            </p>
           </div>
         </div>
       </section>
-      <section>
+      <section class="text-center">
         <button
           id="home-btn"
           onclick="goToHome()"
-          class="btn text-white bg-red-600 hover:bg-red-700 border-none"
+          class="btn mb-4 text-white bg-red-600 hover:bg-red-700 border-none"
         >
-          Home
+          Back to home
         </button>
       </section>
     </main>

@@ -106,26 +106,24 @@ const handleLoadVideos = async (id, addClass) => {
   }
 };
 
-
-
 function handleSorting() {
   globalData.sort((a, b) => {
-  const viewsA = parseFloat(a.others.views.replace('K', '000'));
-  const viewsB = parseFloat(b.others.views.replace('K', '000'));
-  return viewsB - viewsA;
-});
-    const cardContainer = document.getElementById("videos-container");
-    const noDataContainer = document.getElementById("no-data");
-    noDataContainer.innerHTML = "";
-    cardContainer.innerHTML = "";
-    globalData.forEach((video) => {
-      console.log(video)
-      const div = document.createElement("div");
-      const postedTime = video?.others?.posted_date;
+    const viewsA = parseFloat(a.others.views.replace("K", "000"));
+    const viewsB = parseFloat(b.others.views.replace("K", "000"));
+    return viewsB - viewsA;
+  });
+  const cardContainer = document.getElementById("videos-container");
+  const noDataContainer = document.getElementById("no-data");
+  noDataContainer.innerHTML = "";
+  cardContainer.innerHTML = "";
+  globalData.forEach((video) => {
+    console.log(video);
+    const div = document.createElement("div");
+    const postedTime = video?.others?.posted_date;
 
-      const hours = Math.floor(postedTime / 3600);
-      const minutes = Math.floor((postedTime % 3600) / 60);
-      div.innerHTML = `
+    const hours = Math.floor(postedTime / 3600);
+    const minutes = Math.floor((postedTime % 3600) / 60);
+    div.innerHTML = `
             <div class="card bg-base-100 shadow-xl">
           <figure class= "w-full h-40 relative inline-block">
             <img
@@ -161,9 +159,8 @@ function handleSorting() {
           </div>
         </div>
         `;
-      cardContainer.appendChild(div);
-    
-})
+    cardContainer.appendChild(div);
+  });
 }
 handleCategory();
 handleLoadVideos("1000");
